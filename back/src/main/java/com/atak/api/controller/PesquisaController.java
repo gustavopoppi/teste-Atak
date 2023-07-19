@@ -1,22 +1,20 @@
 package com.atak.api.controller;
+import com.atak.api.dto.DadosPesquisa;
 import com.atak.api.service.PesquisaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/")
+@RequestMapping("api")
+@CrossOrigin("*")
 public class PesquisaController {
 
     @Autowired
     PesquisaService pesquisaService;
 
     @GetMapping("{termoBusca}")
-    public String pesquisa(@PathVariable String termoBusca) throws InterruptedException {
-        pesquisaService.buscaGoogle(termoBusca);
-
-        return null;
+    @CrossOrigin("https://localhost:3000")
+    public DadosPesquisa pesquisa(@PathVariable String termoBusca) throws InterruptedException {
+        return pesquisaService.buscaGoogle(termoBusca);
     }
 }

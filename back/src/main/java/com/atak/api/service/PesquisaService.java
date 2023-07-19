@@ -53,16 +53,17 @@ public class PesquisaService {
     }
 
     private static String getTituloRequisicao(String respostaRequisicao) {
-        String PADRAO_NOMENCLATURA_TITULO_SITE_GOOGLE = "<div class=\"yuRUbf\"><a href";
+        String PADRAO_NOMENCLATURA_TITULO_SITE_GOOGLE = "<div class=\\\"yuRUbf\\\"><a href=\\";
 
         int primeiraParteTitulo = respostaRequisicao.indexOf(PADRAO_NOMENCLATURA_TITULO_SITE_GOOGLE) + PADRAO_NOMENCLATURA_TITULO_SITE_GOOGLE.length();
-        int ultimaParteTitulo = respostaRequisicao.indexOf("jsname=", primeiraParteTitulo);
+        int ultimaParteTitulo = respostaRequisicao.indexOf("\\\" jsname=\\\"ACyKwe\\\"", primeiraParteTitulo);
 
         return respostaRequisicao.substring(primeiraParteTitulo, ultimaParteTitulo);
     }
 
     private static String getLinkRequisicao(String respostaRequisicao) {
-        String PADRAO_NOMENCLATURA_LINK_SITE_GOOGLE = "<h3 class=\"LC20lb MBeuO DKV0Md\">";
+
+        String PADRAO_NOMENCLATURA_LINK_SITE_GOOGLE = "<h3 class=\\\"LC20lb MBeuO DKV0Md\\\">";
 
         int primeiraParteLink = respostaRequisicao.indexOf(PADRAO_NOMENCLATURA_LINK_SITE_GOOGLE) + PADRAO_NOMENCLATURA_LINK_SITE_GOOGLE.length();
         int ultimaParteLink = respostaRequisicao.indexOf("</h3>", primeiraParteLink);

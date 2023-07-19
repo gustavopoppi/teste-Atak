@@ -1,9 +1,12 @@
 import './App.css';
-import Home from './componentes/Home/Home';
+import Rotas from './Rotas'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
-    <Home />
+    <BrowserRouter>
+      <Rotas />
+    </BrowserRouter>
   );
 }
 
